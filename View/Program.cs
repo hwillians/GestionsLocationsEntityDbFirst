@@ -14,7 +14,7 @@ namespace View
 
             unityContainer.RegisterType<ClientController, ClientController>();
             unityContainer.RegisterType<LocationController, LocationController>();
-            unityContainer.RegisterType<IClientRepository, ClientRepository>();
+            unityContainer.RegisterType<IClientRepository, Repository.ClientRepository>();
             unityContainer.RegisterType<ILocationRepository, LocationRepository>();
 
             var clientController = unityContainer.Resolve<ClientController>();
