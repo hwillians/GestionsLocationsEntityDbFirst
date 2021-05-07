@@ -12,18 +12,18 @@ namespace View
         {
             int choix = -1;
 
-            WriteLine("*** Ménu Gestion des Locations ***" +
+            WriteLine("*** Ménu Gestion des Locations ***");
+
+            while (choix != 0)
+            {
+                choix = GetIntConsole("\nQuelle action voulez vouz effectuer : " +
                 "\n1.- Ajouter un Client" +
                 "\n2.- Afficher la liste des Clients" +
                 "\n3.- Afficher un Client" +
                 "\n4.- Modifier un Client" +
                 "\n5.- Ajouter une Location" +
                 "\n6.- Afficher la liste des Locations" +
-                "\n0.- Sortir");
-
-            while (choix != 0)
-            {
-                choix = GetIntConsole("\nQuelle action voulez vouz effectuer : ");
+                "\n0.- Sortir\n");
 
                 switch (choix)
                 {
@@ -70,9 +70,13 @@ namespace View
             {
                 String propModif = "";
 
-                while (propModif != "n" && propModif != "p" && propModif != "d" && propModif != "a" && propModif != "c" && propModif != "v" && propModif != "all")
+                while (propModif != "n" && propModif != "p" && propModif != "d" && propModif != "a" && propModif
+                    != "c" && propModif != "v" && propModif != "all")
+                {
                     propModif = GetStringConsole("Choisissez l'élement à modifier " +
-                    "\nn : Nom, p : Prenom, d : Date de Naissance, a : Adresse, c : CodePostal, v : Ville, all : toute les éléments ");
+                      "\nn : Nom, p : Prenom, d : Date de Naissance, a : Adresse, c : CodePostal, " +
+                      "v : Ville, all : toute les éléments ");
+                }
 
                 switch (propModif)
                 {
@@ -95,12 +99,10 @@ namespace View
                         }; break;
                     default: break;
                 }
-
                 clientController.UpdateClient(client);
                 WriteLine(clientController.GetClientById(id));
             }
         }
-
         private static void OptionGetClientById(ClientController clientController)
         {
             int id = GetIntConsole("Tapez l'id du client : ");
